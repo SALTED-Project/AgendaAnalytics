@@ -1,0 +1,29 @@
+// database
+datasource mongodb {
+  provider = "mongodb"
+  url      = "mongodb://mongouser:mongopassword@salted_fileserver_mongodb:27017/middleware?authSource=admin&replicaSet=rs0"
+}
+
+// generator
+generator client {
+  provider = "prisma-client-py"
+  interface = "asyncio"
+  previewFeatures = ["mongoDb"]
+  recursive_type_depth = -1
+}
+
+// data models
+
+model File {
+  @@map("files")
+
+  uuid            String      @id @default(uuid()) @map("_id")
+
+  name            String
+  dateCreated     DateTime?   @default(now())
+  dateModified    DateTime?   @updatedAt
+  encodingFormat  String?
+
+  url             String?     
+}
+

@@ -1,0 +1,2 @@
+0 1 * * * root cd /usr/src/app && /usr/local/bin/python ./create_map.py >> /usr/src/app/logs/`date +\%Y\%m\%d\%H\%M\%S`-cron_map.log
+0 2 * * * root cd /usr/src/app && /usr/local/bin/python ./create_excel.py >> /usr/src/app/logs/`date +\%Y\%m\%d\%H\%M\%S`-cron_excel.log

@@ -1,0 +1,71 @@
+{
+  "id": "urn:ngsi-ld:EVChargingStation:bfcfebcf-532b-427e-836d-335d38821ae3Test",
+  "type": "EVChargingStation",
+  "address": {
+    "type": "Property",
+    "value": {
+      "addressCountry": "DE",
+      "addressLocality": "Bad Wimpfen",
+      "streetAddress": "Klingengasse 10",
+      "postalCode": "74206"
+    }
+  },
+  "capacity": {
+    "type": "Property",
+    "value": 2
+  },
+  "availableCapacity": {
+    "type": "Property",
+    "value": 2,
+    "observedAt": "2022-10-04T13:57:12.000Z"
+  },
+  "amperage": {
+    "type": "Property",
+    "value": [
+      32,
+      32
+    ]
+  },
+  "location": {
+    "type": "Property",
+    "value": {
+      "coordinates": [
+        9.161798,
+        49.227083
+      ],
+      "type": "Point"
+    }
+  },
+  "name": {
+    "type": "Property",
+    "value": "PP00517"
+  },
+  "operator": {
+    "type": "Property",
+    "value": "Stadt Bad Wimpfen"
+  },
+  "socketType": {
+    "type": "Property",
+    "value": [
+      "TYPE_2_OUTLET",
+      "TYPE_2_OUTLET"
+    ]
+  },
+  "chargingUnitId": {
+    "type": "Property",
+    "value": [
+      "BE-1829-7",
+      "BE-1839-5"
+    ]
+  },
+  "contactPoint": {
+    "type": "Property",
+    "value": {
+      "openingHours": []
+    }
+  },
+  "@context": [
+    "https://raw.githubusercontent.com/smart-data-models/dataModel.Transportation/master/context.jsonld",
+    "https://smartdatamodels.org/context.jsonld"
+  ]
+}

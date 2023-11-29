@@ -1,0 +1,82 @@
+x-logging: &default-logging
+  driver: loki
+  options:
+    loki-url: 'http://localhost:3100/api/prom/push'
+
+
+
+version: '3.7'
+
+networks:
+  default:
+    name: salted_commons_default
+    external: true
+
+
+services:
+
+  salted_fileserver_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: salted_fileserver_service
+    restart: unless-stopped
+    ports:
+      - "${SERVICE_PORT}:80"
+    depends_on:
+      - salted_fileserver_mongodb
+    environment:
+      - APP_NAME=salted_fileserver_service
+      - ENDPOINT_PASSWORD=$ENDPOINT_PASSWORD
+      - DB_URI=$DB_URI
+      - SEAWEED_MASTER_URL=$SEAWEED_MASTER_URL
+      - SEAWEED_VOLUME_SERVER_URL=$SEAWEED_VOLUME_SERVER_URL
+      - PRE_START_PATH=/prestart.sh   
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock 
+    logging: *default-logging
+
+  salted_fileserver_mongodb:
+    image: mongo:4.4.0
+    restart: unless-stopped
+    extra_hosts:
+      - "salted_fileserver_mongodb:127.0.0.1"
+    ports:
+      - "${MONGODB_PORT}:27017"
+    volumes:
+      - "fileserver-mongo-data:/data/db"
+      - "./mongo-entrypoint/:/docker-entrypoint-initdb.d/"
+    command: --auth --replSet "rs0" --setParameter "transactionLifetimeLimitSeconds=1800"
+
+  salted_fileserver_seaweedfs-master:
+    image: chrislusf/seaweedfs
+    restart: unless-stopped
+    ports:
+      - "9334:9333"
+      - "19334:19333"
+    volumes:
+      - "seaweed-master-data:/data"
+    command: 'master -ip=salted_fileserver_seaweedfs-master -port=9333 -mdir="/data" '
+
+  salted_fileserver_seaweedfs-volume:
+    image: chrislusf/seaweedfs
+    container_name: salted_fileserver_salted_fileserver_seaweedfs-volume_1
+    restart: unless-stopped
+    ports:
+      - "${SEAWEED_VOLUME_PORT}:8080"
+      - "18081:18080"
+    depends_on:
+      - salted_fileserver_seaweedfs-master
+    environment:
+      SEAWEED_VOLUME_PUBLIC_URL: localhost:8080
+    volumes:
+      - "seaweed-volume-data:/data"
+    command: 'volume -mserver="salted_fileserver_seaweedfs-master:9333" -ip=salted_fileserver_seaweedfs-volume -port=8080 -publicUrl=localhost:8080 -dir="/data"'
+
+
+
+volumes:
+  fileserver-mongo-data:
+  seaweed-master-data:
+  seaweed-volume-data:
+

@@ -1,0 +1,7 @@
+# settings for db connection
+
+# postgres db
+DATABASE_URI: postgresql://yourpostgresuser:yourpostgrespw@salted_searchengine_postgres_db:5432/SearchEngineDB
+
+# postgres db test
+DATABASE_URI_TEST: postgresql://testuser:testpw@salted_searchengine_testdb:5432/SeDB_test

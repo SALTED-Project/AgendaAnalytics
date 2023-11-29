@@ -1,0 +1,7 @@
+*.pptx
+__pycache__/
+*.pyc
+*.log
+test.py
+src/env/
+

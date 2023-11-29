@@ -1,0 +1,8 @@
+
+# settings for db connection
+# for local deployment / if the service container is not in a docker network with the postgres_db service, this must be bridge0-IP or localhost.
+
+# postgres db
+DATABASE_URI: postgresql://yourcommonsuser:yourcommonspw@postgres_db:5432/db_commons
+
+

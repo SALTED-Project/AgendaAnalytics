@@ -1,0 +1,10 @@
+*.log
+
+/nginx/data/*
+!/nginx/data/Template.xlsx
+!/nginx/data/SDG_Template.xlsx
+!/nginx/data/examples
+/app/map/*
+
+# exception to the rule
+.gitkeep 

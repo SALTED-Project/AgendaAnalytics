@@ -1,0 +1,37 @@
+x-logging: &default-logging
+  driver: loki
+  options:
+    loki-url: 'http://localhost:3100/api/prom/push'
+
+
+version: '3.7'
+
+networks:
+  default:
+    name: salted_commons_default
+    external: true
+
+services:
+  salted_mapping_service:
+    container_name: salted_mapping_service
+    build: ./src 
+    # since this is an endlessly running command the containers stays running
+    # add --reload if needed for debugging
+    command: [sh, -c, "cd /usr/src/ && ls -la && uvicorn app.main:app --reload --host 0.0.0.0 --port 8000 --log-config ./app/logs/log.ini"]
+    restart: unless-stopped
+    # volumes:
+    #   - ./src/:/usr/src/    # for debugging
+    ports:
+      - "${SERVICE_PORT}:8000"  
+    environment:
+      - APP_NAME=$APP_NAME
+      - MQTT_ENABLED=$MQTT_ENABLED
+      - MQTT_HOST=$MQTT_HOST
+      - MQTT_PORT=$MQTT_PORT
+    logging: *default-logging
+
+  
+  
+  
+  
+

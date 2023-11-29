@@ -1,0 +1,111 @@
+/* Style the sidebar - fixed full height */
+#customsidebar {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    background-image: url("./agendaanalytics.png");   /*old: ./agendawissen.png*/
+    background-color: rgb(12,62,79,0.2);
+    background-repeat: no-repeat !important ;
+    background-size: 70%;
+    background-position-x: center;
+    background-position-y: 15px;
+    overflow-x: hidden;
+    padding-top: 16px;
+    border-right: 1px solid rgb(12,62,79,0.4);
+  }
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
+
+#customsidebar_link_frame {
+    position: absolute;
+    bottom: 6% !important; 
+    color:black !important;
+    font-size: 0.8em !important; 
+    font-weight: bold;
+    line-height: 1.0 !important;
+    font-family: 'Roboto', sans-serif !important; 
+    /*transform: rotate(-90deg);*/
+    /*border-width: 2px;*/
+    /*border-style: solid;*/
+    /*border-color:  #fc5f26 !important;*/
+    background-color: #248cb3 !important;
+    border-radius: 3% !important;
+    text-align:center !important;
+    margin: 0.5em;
+    padding: 1em;
+}
+
+#customsidebar_link_frame> a {
+    font-size: 1em;
+    position:relative;
+    margin: 5px !important;
+    text-align:center !important;
+    color: #0b3d4f !important;
+    padding-top: 5px !important;
+}
+
+#customsidebar_link_frame> hr {
+    size: 2em !important;
+    color: #0b3d4f !important;
+    margin: 5px; 
+}
+
+#customsidebar_link_frame> a.custom-small {
+    font-size: 0.7em;
+    color: #0b3d4fc4 !important;
+    text-align:left !important;
+}
+
+#customsidebar_link_kybeidos {
+    bottom: 0%; 
+    contain: content;
+    height: 5% ;
+    text-align: center !important;
+    padding: 5px !important;
+    font-size: auto;
+    left:5%;
+    right:5%;
+    position:absolute;
+    margin: 2px !important;
+}
+
+#customsidebar_link_kybeidos > img{
+    position: relative !important;
+    height: 75% !important;
+    width: auto !important;
+
+}
+
+#customsidebar_point {
+    color:  #fc5f26 !important;
+    font-weight: bold;
+    line-height: 1.0;
+    font-family: 'Roboto', sans-serif !important; 
+}
+
+
+
+
+/* Style the map content */
+body > div:first-of-type {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    padding: 0px 10px;
+    
+  }
+
+.leaflet-bottom.leaflet-right {
+    position: fixed !important;   
+
+}
+
+.leaflet-top.leaflet-right {
+    position: fixed !important;   
+
+}
+
+.folium-map {
+    width: auto !important;
+    right: 0% !important;
+}

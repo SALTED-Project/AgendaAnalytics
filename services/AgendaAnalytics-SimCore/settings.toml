@@ -1,0 +1,20 @@
+[default]
+
+# This is nothing that a user should change. It's mainly for developers
+
+#
+# folder names for storing the temporary folders based on
+# token names, the reference text folder and the result folder
+# not be changed if not necessary
+#
+projectfolder = "projects"
+reffoldername = "reftext"
+anafoldername = "anatext"
+resfoldername = "results"
+
+#
+# minimum word count for the analyzed text for a sentence
+#
+min_word_count = 4
+
+[docker]

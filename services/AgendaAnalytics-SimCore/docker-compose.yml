@@ -1,0 +1,25 @@
+version: "3.5"
+
+services:
+  simcore_engine:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: simcore_v003:latest
+    ports:
+      - "9060:9060"
+    networks:
+      - backend
+    volumes:
+      - "projects:/projects"
+    restart: unless-stopped
+    privileged: true
+    #extra_hosts:
+    #  - "host.docker.internal:host-gateway"
+
+networks:
+  backend:
+    name: simcore_backend
+volumes:
+  projects:
+

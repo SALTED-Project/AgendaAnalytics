@@ -1,0 +1,45 @@
+Name                      Version    License                                             
+ SQLAlchemy                1.4.42     MIT License                                         
+ anyio                     3.7.1      MIT License                                         
+ cachetools                5.3.1      MIT License                                         
+ certifi                   2023.7.22  Mozilla Public License 2.0 (MPL 2.0)                
+ chardet                   4.0.0      GNU Library or Lesser General Public License (LGPL) 
+ click                     8.1.7      BSD License                                         
+ dynaconf                  3.1.7      MIT License                                         
+ exceptiongroup            1.1.3      MIT License                                         
+ fastapi                   0.79.0     MIT License                                         
+ google-api-core           2.11.1     Apache Software License                             
+ google-api-python-client  2.81.0     Apache Software License                             
+ google-auth               2.23.0     Apache Software License                             
+ google-auth-httplib2      0.1.1      Apache Software License                             
+ googleapis-common-protos  1.60.0     Apache Software License                             
+ greenlet                  2.0.2      MIT License                                         
+ h11                       0.14.0     MIT License                                         
+ httplib2                  0.22.0     MIT License                                         
+ idna                      2.10       BSD License                                         
+ importlib-metadata        6.7.0      Apache Software License                             
+ iniconfig                 2.0.0      MIT License                                         
+ numpy                     1.21.6     BSD License                                         
+ packaging                 23.1       Apache Software License; BSD License                
+ pandas                    1.3.2      BSD License                                         
+ pluggy                    1.2.0      MIT License                                         
+ protobuf                  4.24.3     3-Clause BSD License                                
+ psycopg2-binary           2.9.3      GNU Library or Lesser General Public License (LGPL) 
+ pyasn1                    0.5.0      BSD License                                         
+ pyasn1-modules            0.3.0      BSD License                                         
+ pydantic                  1.9.1      MIT License                                         
+ pyparsing                 3.1.1      MIT License                                         
+ pytest                    7.3.2      MIT License                                         
+ python-dateutil           2.8.2      Apache Software License; BSD License                
+ pytz                      2021.1     MIT License                                         
+ requests                  2.25.1     Apache Software License                             
+ rsa                       4.9        Apache Software License                             
+ six                       1.16.0     MIT License                                         
+ sniffio                   1.3.0      Apache Software License; MIT License                
+ starlette                 0.19.1     BSD License                                         
+ tomli                     2.0.1      MIT License                                         
+ typing-extensions         4.7.1      Python Software Foundation License                  
+ uritemplate               4.1.1      Apache Software License; BSD License                
+ urllib3                   1.26.16    MIT License                                         
+ uvicorn                   0.18.2     BSD License                                         
+ zipp                      3.15.0     MIT License  

@@ -1,0 +1,78 @@
+version: '3.7'
+
+networks:
+  default:
+    name: salted_commons_default
+    external: true
+
+  # #or for standalone
+  # default:
+  #   driver: bridge
+
+    
+services:
+  salted_searchengine_service:
+    container_name: salted_searchengine_service
+    build: ./src 
+    # since this is an endlessly running command the containers stays running
+    # add --reload if needed for debugging
+    command: [sh, -c, "cd /usr/src/ && ls -la && uvicorn app.searchengine_rest_api:app --host 0.0.0.0 --port 8000"]
+    restart: unless-stopped
+    # volumes:
+    #   - ./src/:/usr/src/
+    ports:
+      - "${SERVICE_PORT}:8000"
+    environment:
+      - GOOGLE_APIKEY=$GOOGLE_APIKEY
+      - GOOGLE_CSID=$GOOGLE_CSID
+      - QUERY_LIMIT=$QUERY_LIMIT
+    networks:
+      - default
+
+
+  salted_searchengine_postgres_db:
+    container_name: salted_searchengine_postgres_db
+    image: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - salted_searchengine_postgres_data:/var/lib/postgresql/data/
+    ports:
+    #- "${POSTGRES_PORT}:5432" # for debugging
+      - "5432"
+    healthcheck: 
+      test: ["CMD-SHELL", "pg_isready -q -d ${POSTGRES_DB} -U ${POSTGRES_USER}" ]
+      start_period: 10s
+      interval: 60s
+      timeout: 5s
+      retries: 5  
+    networks:
+      - default 
+
+
+  salted_searchengine_testdb:
+    container_name: salted_searchengine_testdb
+    image: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER_TEST}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD_TEST}
+      - POSTGRES_DB=${POSTGRES_DB_TEST}
+    ports:
+    #- "${POSTGRES_PORT_TEST}:5432" # for debugging
+      - "5432"
+    healthcheck: 
+      test: ["CMD-SHELL", "pg_isready -q -d ${POSTGRES_DB} -U ${POSTGRES_USER}" ]
+      start_period: 10s
+      interval: 60s
+      timeout: 5s
+      retries: 5    
+    networks:
+      - default 
+
+
+volumes:
+  salted_searchengine_postgres_data: ~

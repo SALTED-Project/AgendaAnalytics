@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.log
+./src/app/refcorpora/*
+!.gitignore
+
+
+

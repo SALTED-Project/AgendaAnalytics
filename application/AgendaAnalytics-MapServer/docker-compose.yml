@@ -1,0 +1,57 @@
+
+version: '3.7'
+
+networks:
+  default:
+    name: salted_commons_default
+    external: true
+
+
+
+services:
+
+
+  salted_mapserver_app:
+    container_name: mapserver_app
+    build: ./app
+    restart: unless-stopped
+    volumes:
+      - ./app/create_map.py:/usr/src/app/create_map.py           
+      - ./app/create_map.ini:/usr/src/app/create_map.ini         
+      - ./app/create_excel.py:/usr/src/app/create_excel.py          
+      - ./app/logs/:/usr/src/app/logs/
+      - ./app/map/archive/:/usr/src/app/map/archive/
+      - ./nginx/html_usr/:/usr/src/app/map/valid/
+      - ./app/map/png/:/usr/src/app/map/png/
+    networks:
+      - default
+    
+
+
+  salted_mapserver_nginx:
+    build: ./nginx
+    container_name: mapserver_nginx
+    restart: unless-stopped
+    ports:
+      - "81:8080"
+    tty: true
+    volumes:
+      - ./nginx/nginx.conf:<your conf location>
+      - ./nginx/conf.d:<your conf location>
+      - ./nginx/.htpasswd:<your .htpasswd location>
+      - ./nginx/logs:<your logs location>
+      - ./nginx/html_etc:<your html_etc location>
+      - ./nginx/html_usr:<your html_usr location>
+      - ./nginx/images:<your images location>
+      - ./nginx/cgi-bin:<your cgi-bin location>
+      - ./nginx/data:<your data location>
+      - ./nginx/cache:<your cache location>
+    environment:
+      - debug=true
+      - NGINX_ENTRYPOINT_QUIET_LOGS=0
+    networks:
+      - default
+
+
+
+

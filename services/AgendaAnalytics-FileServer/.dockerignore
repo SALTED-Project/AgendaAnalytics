@@ -1,0 +1,6 @@
+*
+!app
+!scripts
+!poetry.lock
+!pyproject.toml
+!*.sh

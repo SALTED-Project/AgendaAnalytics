@@ -1,0 +1,19 @@
+[
+    {
+    "name": "Kybeidos",
+    "legalform": "GmbH",
+    "city": "Heidelberg",
+    "url_google": "www.kybeidos.de",
+    "country": "Deutschland",
+    "postcode": "69126",
+    "street": "Heinrich-Fuchs-Straße",
+    "housenumber": "94",
+    "lat": "",
+    "long": "",
+    "url_osm": "",
+    "officecategory": "",
+    "created": "2022-09-15T11:19:13.145Z",
+    "modified": "2022-09-15T11:19:13.145Z",
+    "origin_service": "testservice"
+  }
+  ]

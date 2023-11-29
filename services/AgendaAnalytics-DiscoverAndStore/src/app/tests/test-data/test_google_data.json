@@ -1,0 +1,33 @@
+[
+    {
+      "kind": "customsearch#result",
+      "title": "50Hertz",
+      "htmlTitle": "<b>50Hertz</b>",
+      "link": "https://www.50hertz.com/",
+      "displayLink": "www.50hertz.com",
+      "snippet": "50Hertz ist Vorreiter bei der Integration von Erneuerbaren Energien ins Stromnetz und sichert die Versorgung von 18 Millionen Menschen in Ostdeutschland ...",
+      "htmlSnippet": "<b>50Hertz</b> ist Vorreiter bei der Integration von Erneuerbaren Energien ins Stromnetz und sichert die Versorgung von 18 Millionen Menschen in Ostdeutschland&nbsp;...",
+      "cacheId": "Ch0RKozdvpQJ",
+      "formattedUrl": "https://www.50hertz.com/",
+      "htmlFormattedUrl": "https://www.<b>50hertz</b>.com/",
+      "pagemap": {
+        "cse_thumbnail": [
+          {
+            "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRl79sqWRs-LdTWW83w7pWHp1OzIiCauxZAsETkkbIfv0YMVXhNOQ2I0oI",
+            "width": "402",
+            "height": "125"
+          }
+        ],
+        "metatags": [
+          {
+            "viewport": "width=device-width,initial-scale=1.0,maximum-scale=1.0"
+          }
+        ],
+        "cse_image": [
+          {
+            "src": "https://www.50hertz.com/Portals/1/50hertz-logo-group.png?ver=K8JOTxiRUaVmEypoqaSRug%3D%3D"
+          }
+        ]
+      }
+    }
+  ]

@@ -1,0 +1,97 @@
+ Name                                    Version      License                                                         
+ Deprecated                              1.2.14       MIT License                                                     
+ SQLAlchemy                              1.4.37       MIT License                                                     
+ aiofiles                                23.2.1       Apache Software License                                         
+ aiohttp                                 3.8.5        Apache Software License                                         
+ aiosignal                               1.3.1        Apache Software License                                         
+ anyio                                   3.6.1        MIT License                                                     
+ asgiref                                 3.7.2        BSD License                                                     
+ async-timeout                           4.0.3        Apache Software License                                         
+ asyncpg                                 0.20.1       Apache Software License                                         
+ atomicwrites                            1.4.0        MIT License                                                     
+ attrs                                   21.4.0       MIT License                                                     
+ backoff                                 1.10.0       MIT License                                                     
+ beautifulsoup4                          4.11.1       MIT License                                                     
+ bs4                                     0.0.1        MIT License                                                     
+ certifi                                 2022.6.15    Mozilla Public License 2.0 (MPL 2.0)                            
+ chardet                                 3.0.4        GNU Library or Lesser General Public License (LGPL)             
+ charset-normalizer                      2.0.12       MIT License                                                     
+ click                                   7.1.2        BSD License                                                     
+ colorama                                0.4.5        BSD License                                                     
+ databases                               0.2.6        BSD License                                                     
+ decorator                               5.1.1        BSD License                                                     
+ deepdiff                                5.8.1        MIT License                                                     
+ dnspython                               2.4.2        ISC                                                             
+ dynaconf                                3.1.9        MIT License                                                     
+ et-xmlfile                              1.1.0        MIT License                                                     
+ fastapi                                 0.78.0       MIT License                                                     
+ fastapi-utils                           0.2.1        MIT License                                                     
+ frozenlist                              1.4.0        Apache Software License                                         
+ googleapis-common-protos                1.60.0       Apache Software License                                         
+ greenlet                                1.1.2        MIT License                                                     
+ grpcio                                  1.57.0       Apache Software License                                         
+ h11                                     0.9.0        MIT License                                                     
+ h2                                      3.2.0        MIT License                                                     
+ hpack                                   3.0.0        MIT License                                                     
+ hstspreload                             2021.12.1    BSD License                                                     
+ html2text                               2020.1.16    GNU General Public License (GPL)                                
+ httptools                               0.0.13       MIT License                                                     
+ httpx                                   0.11.1       BSD License                                                     
+ hyperframe                              5.2.0        MIT License                                                     
+ idna                                    2.10         BSD License                                                     
+ importlib-resources                     6.0.1        Apache Software License                                         
+ iniconfig                               1.1.1        MIT License                                                     
+ jsonmerge                               1.9.0        MIT License                                                     
+ jsonschema                              4.17.3       MIT License                                                     
+ motor                                   3.1.1        Apache Software License                                         
+ multidict                               6.0.4        Apache Software License                                         
+ numpy                                   1.23.0       BSD License                                                     
+ openpyxl                                3.1.2        MIT License                                                     
+ opentelemetry-api                       1.10.0       Apache Software License                                         
+ opentelemetry-exporter-otlp             1.10.0       Apache Software License                                         
+ opentelemetry-exporter-otlp-proto-grpc  1.10.0       Apache Software License                                         
+ opentelemetry-exporter-otlp-proto-http  1.10.0       Apache Software License                                         
+ opentelemetry-instrumentation           0.29b0       Apache Software License                                         
+ opentelemetry-instrumentation-asgi      0.29b0       Apache Software License                                         
+ opentelemetry-instrumentation-fastapi   0.29b0       Apache Software License                                         
+ opentelemetry-instrumentation-logging   0.29b0       Apache Software License                                         
+ opentelemetry-proto                     1.10.0       Apache Software License                                         
+ opentelemetry-sdk                       1.10.0       Apache Software License                                         
+ opentelemetry-semantic-conventions      0.29b0       Apache Software License                                         
+ opentelemetry-util-http                 0.29b0       Apache Software License                                         
+ ordered-set                             4.1.0        MIT License                                                     
+ packaging                               21.3         Apache Software License; BSD License                            
+ paho-mqtt                               1.6.1        Eclipse Public License v2.0 / Eclipse Distribution License v1.0 
+ pandas                                  1.4.2        BSD License                                                     
+ pkgutil_resolve_name                    1.3.10       MIT License                                                     
+ pluggy                                  1.0.0        MIT License                                                     
+ prometheus-client                       0.17.1       Apache Software License                                         
+ prometheus-fastapi-instrumentator       6.1.0        ISC                                                             
+ protobuf                                3.20.3       BSD-3-Clause                                                    
+ psycopg2-binary                         2.9.3        GNU Library or Lesser General Public License (LGPL)             
+ py                                      1.11.0       MIT License                                                     
+ pydantic                                1.9.1        MIT License                                                     
+ pymongo                                 4.3.3        Apache Software License                                         
+ pyparsing                               3.0.9        MIT License                                                     
+ pyrsistent                              0.19.3       MIT License                                                     
+ pytest                                  7.1.2        MIT License                                                     
+ python-dateutil                         2.8.2        Apache Software License; BSD License                            
+ python-multipart                        0.0.5        Apache Software License                                         
+ pytz                                    2022.1       MIT License                                                     
+ requests                                2.28.0       Apache Software License                                         
+ requests-mock                           1.9.3        Apache Software License                                         
+ rfc3986                                 1.5.0        Apache Software License                                         
+ six                                     1.16.0       MIT License                                                     
+ sniffio                                 1.2.0        Apache Software License; MIT License                            
+ soupsieve                               2.3.2.post1  MIT License                                                     
+ starlette                               0.19.1       BSD License                                                     
+ tomli                                   2.0.1        MIT License                                                     
+ typing_extensions                       4.2.0        Python Software Foundation License                              
+ urllib3                                 1.26.9       MIT License                                                     
+ uvicorn                                 0.11.2       BSD License                                                     
+ uvloop                                  0.17.0       Apache Software License; MIT License                            
+ validators                              0.20.0       MIT License                                                     
+ websockets                              8.1          BSD License                                                     
+ wrapt                                   1.15.0       BSD License                                                     
+ yarl                                    1.9.2        Apache Software License                                         
+ zipp                                    3.16.2       MIT License  

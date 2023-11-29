@@ -1,0 +1,54 @@
+{
+   "id": get_id('Organization'),
+   "type": 'Organization',
+   "dateCreated": {
+     "type": 'Property',
+     "value": get_timestamp()
+   },
+   "dateModified": {
+     "type": 'Property',
+     "value": get_timestamp()
+   },
+   "name": {
+     "type": 'Property',
+     "value": check_string(name)
+   },
+   "location": {
+     "type": 'GeoProperty',
+     "value": {
+       "type": 'Point',
+       "coordinates": [
+         to_number(check_string(lat)),
+         to_number(check_string(long))
+       ]
+     }
+   },
+   "address": {
+     "type": 'Property',
+     "value": {
+       "addressLocality": check_string(city),
+       "postalCode": check_string(postcode),
+       "streetAddress": get_streetaddress(street,housenumber)
+     }
+   },
+   "areaServed": {
+     "type": 'Property',
+     "value": null
+   },
+   "url": {
+     "type": 'Property',
+     "value": check_string(url_google)
+   },
+   "legalName": {
+     "type": 'Property',
+     "value": get_legalname(name,legalform)
+   },
+   "taxID": {
+     "type": 'Property',
+     "value": null
+   },
+   "@context": [
+     'https://raw.githubusercontent.com/smart-data-models/dataModel.Organization/master/context.jsonld',
+     'https://smartdatamodels.org/context.jsonld'
+   ]
+ }

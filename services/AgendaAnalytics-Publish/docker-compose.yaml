@@ -1,0 +1,144 @@
+x-logging: &default-logging
+  driver: loki
+  options:
+    loki-url: 'http://localhost:3100/api/prom/push'
+
+
+version: '3.7'
+
+networks:
+  default:
+    name: salted_commons_default
+    external: true
+  testnetwork:
+    name: salted_publish_network
+    driver: bridge
+
+services:
+  salted_publish_service:
+    container_name: salted_publish_service
+    build: ./src 
+    # since this is an endlessly running command the containers stays running
+    # add --reload if needed for debugging
+    command: [sh, -c, "cd /usr/src/ && ls -la && uvicorn app.main:app --host 0.0.0.0 --port 8000 --log-config ./app/logs/log.ini "]
+    restart: unless-stopped
+    # volumes:
+    #   - ./src/:/usr/src/     # for debugging
+    ports:
+      - "${SERVICE_PORT}:8000"  
+    environment:
+      - APP_NAME=$APP_NAME
+      - MQTT_ENABLED=$MQTT_ENABLED
+      - SCORPIO_URL=$SCORPIO_URL
+      - SCORPIO_TEST_URL=$SCORPIO_TEST_URL
+      - MQTT_HOST=$MQTT_HOST
+      - MQTT_PORT=$MQTT_PORT
+    depends_on:
+      salted_publish_testscorpio:
+        condition: service_healthy
+      salted_publish_testdb:
+        condition: service_healthy
+    logging: *default-logging
+    networks:
+      - testnetwork
+      - default
+
+  
+  salted_publish_testdb:
+    container_name: salted_publish_testdb
+    image: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER_TEST}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD_TEST}
+      - POSTGRES_DB=${POSTGRES_DB_TEST}
+    ports:
+      - "5432"
+    healthcheck: 
+      test: ["CMD-SHELL", "pg_isready -q -d ${POSTGRES_DB_TEST} -U ${POSTGRES_USER_TEST}" ]
+      start_period: 5s
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    # needs no volume, since db will be created and filled with entries during the tests (needs to be empty at each startup/test begin)
+    networks:
+      - testnetwork
+  
+
+  # for testing scorpio
+  salted_publish_testzookeeper:
+    image: zookeeper
+    restart: unless-stopped
+    ports:
+      - "2181"
+    logging:
+      driver: none
+    networks:
+      - testnetwork
+
+  salted_publish_testkafka:
+    image: bitnami/kafka
+    restart: unless-stopped
+    ports:
+      - "9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: salted_publish_testkafka
+      KAFKA_ZOOKEEPER_CONNECT: salted_publish_testzookeeper:2181
+      KAFKA_ADVERTISED_PORT: 9092
+      KAFKA_LOG_RETENTION_MS: 10000
+      KAFKA_LOG_RETENTION_CHECK_INTERVAL_MS: 5000
+      ALLOW_PLAINTEXT_LISTENER: "yes"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - salted_publish_testzookeeper
+    logging:
+      driver: none
+    networks:
+      - testnetwork
+
+  salted_publish_testpostgres:
+    image: postgis/postgis
+    restart: unless-stopped
+    ports:
+      - "5432"
+    environment:
+      POSTGRES_USER: ngb
+      POSTGRES_PASSWORD: ngb
+      POSTGRES_DB: ngb
+    logging:
+      driver: none
+    healthcheck: 
+      test: ["CMD-SHELL", "pg_isready -q -d ngb -U ngb" ]
+      start_period: 5s
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - testnetwork
+    
+  salted_publish_testscorpio:
+    image: scorpiobroker/all-in-one-runner:java-kafka-3.0.9 
+    command: [sh, -c, "apt update && apt -y install curl && java -jar quarkus-run.jar" ]
+    environment:
+      SERVER_PORT: 9090
+      SCORPIO_GATEWAYURL: "http:"
+      SCORPIO_ENTITY_DEFAULT_LIMIT: 1000
+      SCORPIO_ENTITY_MAX_LIMIT: 1000      
+      BUSHOST: salted_publish_testkafka
+      DBHOST: salted_publish_testpostgres
+    ports:
+      - "9999:9090"
+    healthcheck:
+      test: ["CMD-SHELL", "curl http://localhost:9090/ngsi-ld/v1/entities"]
+      start_period: 60s
+      interval: 30s
+      timeout: 10s
+      retries: 10
+    depends_on:
+      salted_publish_testpostgres:
+        condition: service_healthy
+      salted_publish_testkafka:
+        condition: service_started
+    networks:
+      - testnetwork
